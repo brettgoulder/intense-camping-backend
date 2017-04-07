@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
+	"net"
 	"net/http"
 	"os"
 )
@@ -22,6 +23,15 @@ func main() {
 
 	router.GET("/", func(c *gin.Context) {
 		fmt.Println("Host: " + c.Request.Host)
+		addrs, err := net.LookupHost(c.Request.Host)
+		if err {
+			fmt.Println("Error looking up host")
+		} else {
+			if len(addrs) > 0 {
+				fmt.Println("This app reached via IP address " + addrs[0])
+			}
+		}
+
 		c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 
