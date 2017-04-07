@@ -7,9 +7,12 @@
 </style>
 <body>
 	<div style="margin-left:21vw; margin-right:21vw;">
-		<h1>Intense Camping -- Served by {{ .Provider }}</h1>
+		<h1>Intense Camping</h1>
 		<p>
-		This app's domain resolves to IP address {{ .IP }}. A Change!
+		This app is running on infrastructure provided by <b>{{ .ISP }}</b>.
+		</p>
+		<p>
+		The app is served from <b>{{ .City }}, {{ .Region }}, {{ .Country }}</b>
 		</p>
 		<h2>Book Your Camping Trip</h2>
 		<a href="/trips">Sign-up Now</a>

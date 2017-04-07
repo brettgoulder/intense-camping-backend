@@ -41,8 +41,7 @@ func main() {
 			}
 			loc.Provider = iplookup.Lookup(loc.IP)
 		}
-
-		c.HTML(http.StatusOK, "index.tmpl.html", loc)
+		c.HTML(http.StatusOK, "index.tmpl.html", iplookup.Lookup2())
 	})
 
 	router.Run(":" + port)
