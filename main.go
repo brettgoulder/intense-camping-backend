@@ -24,7 +24,7 @@ func main() {
 	router.GET("/", func(c *gin.Context) {
 		fmt.Println("Host: " + c.Request.Host)
 		addrs, err := net.LookupHost(c.Request.Host)
-		if err {
+		if err != nil {
 			fmt.Println("Error looking up host")
 		} else {
 			if len(addrs) > 0 {
