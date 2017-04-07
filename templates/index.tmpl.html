@@ -7,11 +7,11 @@
 </style>
 <body>
 	<h1>Intense Camping</h1>
-	<ul>
-		<li>Domain: {{ .Host }}</li>
-		<li>IP address: {{ .IP }}</li>
-		<li>Provider: {{ .Provider }}</li>
-	</ul>
+	<table>
+	<tr><td>Domain</td><td>{{ .Host }}</td></tr>
+	<tr><td>IP</td><td>{{ .IP }}</td></tr>
+	<tr><td>Provider</td><td>{{ .Provider }}</td></tr>
+	</table>
 	<h2>Book Your Camping Trip</h2>
 	<a href="/trips">Sign-up Now</a>
 	<p>
