@@ -1,9 +1,21 @@
 <html>
-  <title>Intense Camping</title>
+<title>Intense Camping</title>
+<style>
+	* {
+		font-family: sans-serif;
+	}
+</style>
 <body>
-  <h1>Intense Camping</h1>
-  <h2>Book Your Camping Trip</h2>
-  <a href="/trips">Sign-up Now</a>
-  <img src="/static/camping-camping.jpg">
+	<h1>Intense Camping</h1>
+	<ul>
+		<li>Domain: {{ .Host }}</li>
+		<li>IP address: {{ .IP }}</li>
+		<li>Provider: {{ .Provider }}</li>
+	</ul>
+	<h2>Book Your Camping Trip</h2>
+	<a href="/trips">Sign-up Now</a>
+	<p>
+		<img src="/static/camping-camping.jpg">
+	</p>
 </body>
 </html>

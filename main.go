@@ -3,11 +3,18 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/jesperfj/intense-go/pkg/iplookup"
 	"log"
 	"net"
 	"net/http"
 	"os"
 )
+
+type LocationInfo struct {
+	Host     string
+	IP       string
+	Provider string
+}
 
 func main() {
 	port := os.Getenv("PORT")
@@ -22,17 +29,20 @@ func main() {
 	router.Static("/static", "static")
 
 	router.GET("/", func(c *gin.Context) {
-		fmt.Println("Host: " + c.Request.Host)
+		loc := &LocationInfo{}
+		loc.Host = c.Request.Host
+		fmt.Println("Host: " + loc.Host)
 		addrs, err := net.LookupHost(c.Request.Host)
 		if err != nil {
 			fmt.Println("Error looking up host")
 		} else {
 			if len(addrs) > 0 {
-				fmt.Println("This app reached via IP address " + addrs[0])
+				loc.IP = addrs[0]
 			}
+			loc.Provider = iplookup.Lookup(loc.IP)
 		}
 
-		c.HTML(http.StatusOK, "index.tmpl.html", nil)
+		c.HTML(http.StatusOK, "index.tmpl.html", loc)
 	})
 
 	router.Run(":" + port)
