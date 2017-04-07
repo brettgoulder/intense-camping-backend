@@ -1,11 +1,11 @@
 package main
 
 import (
+	"fmt"
+	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"os"
-
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -21,6 +21,7 @@ func main() {
 	router.Static("/static", "static")
 
 	router.GET("/", func(c *gin.Context) {
+		fmt.Println("Host: " + c.Request.Host)
 		c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 
