@@ -6,12 +6,16 @@
 	}
 </style>
 <body>
-	<h1>Intense Camping -- Cloud provided by {{ .Provider }}</h1>
-	This app's domain resolves to IP address {{ .IP }}
-	<h2>Book Your Camping Trip</h2>
-	<a href="/trips">Sign-up Now</a>
-	<p>
-		<img src="/static/camping-camping.jpg">
-	</p>
+	<div style="margin-left:21vw; margin-right:21vw;">
+		<h1>Intense Camping -- Served by {{ .Provider }}</h1>
+		<p>
+		This app's domain resolves to IP address {{ .IP }}
+		</p>
+		<h2>Book Your Camping Trip</h2>
+		<a href="/trips">Sign-up Now</a>
+		<p>
+			<img src="/static/camping-camping.jpg" style="max-width: 100%">
+		</p>
+	</div>
 </body>
 </html>
