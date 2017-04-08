@@ -29,19 +29,16 @@ func main() {
 	router.Static("/static", "static")
 
 	router.GET("/", func(c *gin.Context) {
-		loc := &LocationInfo{}
-		loc.Host = c.Request.Host
-		fmt.Println("Host: " + loc.Host)
 		addrs, err := net.LookupHost(c.Request.Host)
+		loc := &iplookup.IPAPIResponse{}
 		if err != nil {
 			fmt.Println("Error looking up host")
 		} else {
 			if len(addrs) > 0 {
-				loc.IP = addrs[0]
+				loc = iplookup.Lookup2(addrs[0])
 			}
-			loc.Provider = iplookup.Lookup(loc.IP)
 		}
-		c.HTML(http.StatusOK, "index.tmpl.html", iplookup.Lookup2())
+		c.HTML(http.StatusOK, "index.tmpl.html", loc)
 	})
 
 	router.Run(":" + port)

@@ -47,8 +47,8 @@ type IPAPIResponse struct {
 	Zip         string  `json:"zip"`         // "zip": "97818"
 }
 
-func Lookup2() *IPAPIResponse {
-	res, err := http.Get("http://ip-api.com/json")
+func Lookup2(addr string) *IPAPIResponse {
+	res, err := http.Get("http://ip-api.com/json/" + addr)
 	if err != nil {
 		panic(err.Error())
 	}
