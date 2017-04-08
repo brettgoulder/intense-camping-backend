@@ -35,7 +35,7 @@ func main() {
 			fmt.Println("Error looking up host")
 		} else {
 			if len(addrs) > 0 {
-				loc = iplookup.Lookup2(addrs[0])
+				loc = iplookup.Lookup(addrs[0])
 			}
 		}
 		c.HTML(http.StatusOK, "index.tmpl.html", loc)
