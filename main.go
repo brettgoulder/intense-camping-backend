@@ -64,7 +64,11 @@ func main() {
 				loc = lookup(addrs[0])
 			}
 		}
-		c.HTML(http.StatusOK, "index.tmpl.html", loc)
+		var intensity = "camping"
+		if loc.Lat > 36 {
+			intensity = "intense"
+		}
+		c.HTML(http.StatusOK, "index.tmpl.html", gin.H{"loc": loc, "intensity": intensity})
 	})
 
 	router.Run(":" + port)

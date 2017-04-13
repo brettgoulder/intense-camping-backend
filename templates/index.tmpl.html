@@ -9,15 +9,15 @@
 	<div style="margin-left:21vw; margin-right:21vw;">
 		<h1>Intense Camping</h1>
 		<p>
-		This app is running on infrastructure provided by <b>{{ .ISP }}</b>.
+		This app is running on infrastructure provided by <b>{{ .loc.ISP }}</b>.
 		</p>
 		<p>
-		The app's IP address ({{ .Query }}) is served from <b>{{ .City }}, {{ .Region }}, {{ .Country }}, Lat: {{ .Lat }}, Long: {{ .Long }}</b>
+		The app's IP address ({{ .loc.Query }}) is served from <b>{{ .loc.City }}, {{ .loc.Region }}, {{ .loc.Country }}, Lat: {{ .loc.Lat }}, Long: {{ .loc.Long }}</b>
 		</p>
 		<h2>Book Your Camping Trip</h2>
 		<a href="/trips">Sign-up Now</a>
 		<p>
-			<img src="/static/camping-camping.jpg" style="max-width: 100%">
+			<img src="/static/{{ .intensity }}-camping.jpg" style="max-width: 100%">
 		</p>
 	</div>
 </body>
