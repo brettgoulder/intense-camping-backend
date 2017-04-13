@@ -65,7 +65,7 @@ func main() {
 			}
 		}
 		var intensity = "camping"
-		if loc.Lat > 36 {
+		if loc.Region == "OR" {
 			intensity = "intense"
 		}
 		c.HTML(http.StatusOK, "index.tmpl.html", gin.H{"loc": loc, "intensity": intensity})
